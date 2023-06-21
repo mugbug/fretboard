@@ -8,7 +8,17 @@ class SongPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Fretboard(),
+        child: Fretboard(
+          size: Size(400, 240),
+          notesMatrix: [
+            ['', 'o', '', '', 'o', ''],
+            ['', 'o', '', '', 'o', ''],
+            ['', 'o', '', 'o', '', ''],
+            ['', 'o', '', '0', '', ''],
+            ['', 'o', '', '', 'o', ''],
+            ['', '0', '', '', 'o', ''],
+          ],
+        ),
       ),
     );
   }
