@@ -1,6 +1,7 @@
 name: fretboard
 description: Song writing toolkit for Flutter
 version: 0.1.0+1
+homepage: https://github.com/mugbug/fretboard
 
 
 environment:

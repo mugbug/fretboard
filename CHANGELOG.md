@@ -1,3 +1,3 @@
 # 0.1.0+1
 
-- feat: initial commit 🎉
+- feat: Creates `Fretboard` widget that draws a guitar fretboard based on a string matrix.
