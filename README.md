@@ -1,16 +1,18 @@
-# Fretboard 🎸
+# 🎸 fretboard
 
+[![Pub](https://img.shields.io/pub/v/fretboard.svg)](https://pub.dev/packages/fretboard)
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
-[![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 [![License: MIT][license_badge]][license_link]
 
 Song writing toolkit for Flutter.
 
 ## Features
 
-* [x] Easily draw a fretboard layout with some note markers.
-* [ ] Show the note symbol with a letter notation.
-* [ ] Automatically generate a fretboard drawing based on a given scale name.
+✅ Easily draw a fretboard layout with some note markers.
+
+🚧 Show the note symbol with a letter notation.
+
+🚧 Automatically generate a fretboard drawing based on a given scale name.
 
 ## Usage
 
@@ -39,7 +41,7 @@ class MyCustomWidget extends StatelessWidget {
 }
 ```
 
-![Example Screenshot](./doc/assets/fretboard_demo.png)
+![Example Screenshot][screenshot]
 
 ## Advanced usage
 
@@ -79,3 +81,4 @@ Fretboard(
 [license_link]: https://opensource.org/licenses/MIT
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
+[screenshot]: https://raw.githubusercontent.com/mugbug/fretboard/main/doc/assets/fretboard_demo.png
