@@ -39,6 +39,8 @@ class MyCustomWidget extends StatelessWidget {
 }
 ```
 
+![Example Screenshot](./doc/assets/fretboard_demo.png)
+
 ## Advanced usage
 
 ### Custom theme
