@@ -3,18 +3,46 @@
 import 'package:flutter/material.dart';
 
 /// {@template fretboard}
-/// Song writing toolkit for Flutter
+/// A highly customizable guitar fretboard layout
+/// that can be built using a string matrix.
+///
+/// {@macro fretboard.notesMatrix}
+///
 /// {@endtemplate}
 class Fretboard extends StatelessWidget {
   /// {@macro fretboard}
   const Fretboard({
-    super.key,
-    required this.notesMatrix,
+    /// {@macro fretboard.size}
     required this.size,
+    /// {@macro fretboard.notesMatrix}
+    required this.notesMatrix,
+    super.key,
   });
 
+  /// {@template fretboard.size}
+  /// The layout space to use when drawing the fretboard.
+  /// {@endtemplate}
   final Size size;
 
+  /// {@template fretboard.notesMatrix}
+  /// ```dart
+  /// Fretboard(
+  ///   size: Size(200, 200),
+  ///   notesMatrix: [
+  ///     ['', '', 'o', '', ],
+  ///     ['', '', 'o', '', ],
+  ///     ['', '', '', '', ],
+  ///     ['', '', '', '', ],
+  ///     ['', 'o', '', '', ],
+  ///     ['', '', 'o', '', ],
+  ///   ],
+  /// ),
+  /// ```
+  ///
+  /// * `''`: will draw empty frets.
+  /// * `'0'` and `'o'`: will draw a circle on the fret,
+  /// but with different colors.
+  /// {@endtemplate}
   final List<List<String>> notesMatrix;
 
   @override
@@ -24,7 +52,7 @@ class Fretboard extends StatelessWidget {
         height: size.height,
         width: size.width,
         child: CustomPaint(
-          painter: FretboardPainter(
+          painter: _FretboardPainter(
             notesMatrix: notesMatrix,
           ),
         ),
@@ -34,8 +62,8 @@ class Fretboard extends StatelessWidget {
 }
 
 /// Draws the fretboard
-class FretboardPainter extends CustomPainter {
-  FretboardPainter({required this.notesMatrix});
+class _FretboardPainter extends CustomPainter {
+  _FretboardPainter({required this.notesMatrix});
 
   final List<List<String>> notesMatrix;
 

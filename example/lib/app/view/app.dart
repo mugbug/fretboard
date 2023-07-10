@@ -1,4 +1,3 @@
-import 'package:example/l10n/l10n.dart';
 import 'package:example/song/song_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +13,6 @@ class App extends StatelessWidget {
           accentColor: const Color(0xFF13B9FF),
         ),
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
       home: const SongPage(),
     );
   }
