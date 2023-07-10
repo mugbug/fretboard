@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ui';
-
 import 'package:alchemist/alchemist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,9 +16,9 @@ void main() {
         children: [
           GoldenTestScenario(
             name: 'basic',
-            child: Fretboard(
+            child: const Fretboard(
               size: Size(400, 200),
-              notesMatrix: const [
+              notesMatrix: [
                 ['', 'o', '', '', 'o', ''],
                 ['', 'o', '', '', 'o', ''],
                 ['', 'o', '', 'o', '', ''],
@@ -34,7 +30,7 @@ void main() {
           ),
           GoldenTestScenario(
             name: 'custom theme',
-            child: Fretboard(
+            child: const Fretboard(
               size: Size(400, 200),
               theme: FretboardTheme(
                 tonicColor: Colors.green,
@@ -42,7 +38,7 @@ void main() {
                 fretColor: Colors.grey,
                 stringColor: Colors.black,
               ),
-              notesMatrix: const [
+              notesMatrix: [
                 ['', 'o', '', '', 'o', ''],
                 ['', 'o', '', '', 'o', ''],
                 ['', 'o', '', 'o', '', ''],
