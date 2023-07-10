@@ -31,6 +31,26 @@ void main() {
                 ['', '0', '', '', 'o', ''],
               ],
             ),
+          ),
+          GoldenTestScenario(
+            name: 'custom theme',
+            child: Fretboard(
+              size: Size(400, 200),
+              theme: FretboardTheme(
+                tonicColor: Colors.green,
+                noteColor: Colors.pink,
+                fretColor: Colors.grey,
+                stringColor: Colors.black,
+              ),
+              notesMatrix: const [
+                ['', 'o', '', '', 'o', ''],
+                ['', 'o', '', '', 'o', ''],
+                ['', 'o', '', 'o', '', ''],
+                ['', 'o', '', '0', '', ''],
+                ['', 'o', '', '', 'o', ''],
+                ['', '0', '', '', 'o', ''],
+              ],
+            ),
           )
         ],
       ),
