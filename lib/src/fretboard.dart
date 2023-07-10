@@ -2,20 +2,85 @@
 
 import 'package:flutter/material.dart';
 
+/// {@template fretboardtheme}
+/// The theme used to draw the fretboard and the notes.
+/// 
+/// {@endtemplate}
+class FretboardTheme {
+  /// {@macro fretboardtheme}
+  const FretboardTheme({
+    required this.tonicColor,
+    required this.noteColor,
+    required this.fretColor,
+    required this.stringColor,
+  });
+
+  /// The color to draw the circle that represents
+  /// the tonic `'0'` note.
+  final Color tonicColor;
+
+  /// The color to draw the circle that represents
+  /// a normal `'o'` note.
+  final Color noteColor;
+
+  /// The color to draw the line that represents
+  /// the guitar frets.
+  final Color fretColor;
+
+  /// The color to draw the line that represents
+  /// the guitar strings.
+  final Color stringColor;
+}
+
 /// {@template fretboard}
-/// Song writing toolkit for Flutter
+/// A highly customizable guitar fretboard layout
+/// that can be built using a string matrix.
+///
+/// {@macro fretboard.notesMatrix}
+///
 /// {@endtemplate}
 class Fretboard extends StatelessWidget {
   /// {@macro fretboard}
   const Fretboard({
-    super.key,
-    required this.notesMatrix,
     required this.size,
+    required this.notesMatrix,
+    this.theme = const FretboardTheme(
+      tonicColor: Colors.red,
+      noteColor: Colors.blue,
+      fretColor: Colors.black,
+      stringColor: Colors.grey,
+    ),
+    super.key,
   });
 
+  /// {@template fretboard.size}
+  /// The layout space to use when drawing the fretboard.
+  /// {@endtemplate}
   final Size size;
 
+  /// {@template fretboard.notesMatrix}
+  /// ```dart
+  /// Fretboard(
+  ///   size: Size(200, 200),
+  ///   notesMatrix: [
+  ///     ['', '', 'o', '', ],
+  ///     ['', '', 'o', '', ],
+  ///     ['', '', '', '', ],
+  ///     ['', '', '', '', ],
+  ///     ['', 'o', '', '', ],
+  ///     ['', '', 'o', '', ],
+  ///   ],
+  /// ),
+  /// ```
+  ///
+  /// * `''`: will draw empty frets.
+  /// * `'0'` and `'o'`: will draw a circle on the fret,
+  /// but with different colors.
+  /// {@endtemplate}
   final List<List<String>> notesMatrix;
+
+  /// {@macro fretboardtheme}
+  final FretboardTheme theme;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +89,9 @@ class Fretboard extends StatelessWidget {
         height: size.height,
         width: size.width,
         child: CustomPaint(
-          painter: FretboardPainter(
+          painter: _FretboardPainter(
             notesMatrix: notesMatrix,
+            theme: theme,
           ),
         ),
       ),
@@ -34,10 +100,15 @@ class Fretboard extends StatelessWidget {
 }
 
 /// Draws the fretboard
-class FretboardPainter extends CustomPainter {
-  FretboardPainter({required this.notesMatrix});
+class _FretboardPainter extends CustomPainter {
+  _FretboardPainter({
+    required this.notesMatrix,
+    required this.theme,
+  });
 
   final List<List<String>> notesMatrix;
+
+  final FretboardTheme theme;
 
   int get _numberOfFrets => notesMatrix.first.length;
 
@@ -50,7 +121,7 @@ class FretboardPainter extends CustomPainter {
 
   void _drawStrings(Canvas canvas, Size size) {
     final stringPaint = Paint()
-      ..color = Colors.grey
+      ..color = theme.stringColor
       ..strokeWidth = 3;
 
     const x0 = .0;
@@ -73,7 +144,7 @@ class FretboardPainter extends CustomPainter {
 
   void _drawFrets(Canvas canvas, Size size) {
     final stringPaint = Paint()
-      ..color = Colors.black
+      ..color = theme.fretColor
       ..strokeWidth = 3;
 
     const y0 = .0;
@@ -123,11 +194,11 @@ class FretboardPainter extends CustomPainter {
     for (final notes in noteMapping) {
       for (final note in notes) {
         final tonicPaint = Paint()
-          ..color = Colors.red
+          ..color = theme.tonicColor
           ..style = PaintingStyle.fill;
 
         final notePaint = Paint()
-          ..color = Colors.blue
+          ..color = theme.noteColor
           ..style = PaintingStyle.fill;
 
         final paint = switch (note.type) {

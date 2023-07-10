@@ -10,6 +10,12 @@ class SongPage extends StatelessWidget {
       body: Center(
         child: Fretboard(
           size: Size(400, 240),
+          theme: FretboardTheme(
+            tonicColor: Color.fromARGB(255, 208, 83, 74),
+            noteColor: Color.fromARGB(255, 69, 140, 198),
+            fretColor: Colors.black,
+            stringColor: Colors.grey,
+          ),
           notesMatrix: [
             ['', 'o', '', '', 'o', ''],
             ['', 'o', '', '', 'o', ''],
